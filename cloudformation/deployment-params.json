@@ -1,0 +1,19 @@
+[
+    { "ParameterKey":"ProjectName",              "ParameterValue":"Demo Hello World" },
+    { "ParameterKey":"BucketName",               "ParameterValue":"demohelloworld" },
+    { "ParameterKey":"ClusterName",              "ParameterValue":"helloWorld-cluster" },
+    { "ParameterKey":"CodeRepositoryURL",        "ParameterValue":"https://github.com/anujshukla-1987/helloworld-fargate" },
+
+    { "ParameterKey":"HelloWorldServiceName",       "ParameterValue":"service-helloWorld-api" },
+    { "ParameterKey":"HelloWorldContainerName",     "ParameterValue":"service-helloWorld-api" },
+    { "ParameterKey":"HelloWorldContainerPort",     "ParameterValue":"3000" },
+    { "ParameterKey":"HelloWorldContainerCpu",      "ParameterValue":"256" },
+    { "ParameterKey":"HelloWorldContainerMemory",   "ParameterValue":"512" },
+    { "ParameterKey":"HelloWorldDesiredCount",      "ParameterValue":"2" },
+    { "ParameterKey":"HelloWorldHealthEndpoint",    "ParameterValue":"/" },
+
+    { "ParameterKey":"HelloWorldBuildspecLocation", "ParameterValue":"containers/helloworld-api" },
+    { "ParameterKey":"HelloWorldEnvironmentType",   "ParameterValue":"LINUX_CONTAINER" },
+    { "ParameterKey":"HelloWorldComputeType",       "ParameterValue":"BUILD_GENERAL1_SMALL" },
+    { "ParameterKey":"HelloWorldBuildImage",        "ParameterValue":"aws/codebuild/ubuntu-base:14.04" }
+]
