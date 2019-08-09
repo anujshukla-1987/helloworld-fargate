@@ -29,16 +29,9 @@ Parameters:
   EnvironmentType:
     Description: Type of build environment to use for related builds.
     Type: String
-    AllowedValues:
-      - WINDOWS_CONTAINER
-      - LINUX_CONTAINER
   ComputeType:
     Description: Compute resources the build project will use to build.
     Type: String
-    AllowedValues:
-      - BUILD_GENERAL1_SMALL
-      - BUILD_GENERAL1_MEDIUM
-      - BUILD_GENERAL1_LARGE
   BuildImage:
     Description: >-
       System Image identifier of the image to use for code build
