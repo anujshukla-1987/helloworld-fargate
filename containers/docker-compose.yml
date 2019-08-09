@@ -2,8 +2,8 @@ version: "3.6"
 
 services:
 
-  service-slayer-defense-api:
+  service-helloworld-api:
     build: ./helloworld-api/
-    container_name: service-helloWorld-api
+    container_name: service-helloworld-api
     ports:
       - 3000:3000

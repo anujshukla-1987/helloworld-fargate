@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BUCKET_NAME=helloWorldFromAnuj
+BUCKET_NAME=helloworldfromanuj
 
 ## Creates S3 bucket
 aws s3 mb s3://$BUCKET_NAME

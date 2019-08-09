@@ -1,11 +1,11 @@
 [
     { "ParameterKey":"ProjectName",              "ParameterValue":"Demo Hello World" },
-    { "ParameterKey":"BucketName",               "ParameterValue":"demohelloworld" },
-    { "ParameterKey":"ClusterName",              "ParameterValue":"helloWorld-cluster" },
+    { "ParameterKey":"BucketName",               "ParameterValue":"helloworldfromanuj" },
+    { "ParameterKey":"ClusterName",              "ParameterValue":"helloworld-cluster" },
     { "ParameterKey":"CodeRepositoryURL",        "ParameterValue":"https://github.com/anujshukla-1987/helloworld-fargate" },
 
-    { "ParameterKey":"HelloWorldServiceName",       "ParameterValue":"service-helloWorld-api" },
-    { "ParameterKey":"HelloWorldContainerName",     "ParameterValue":"service-helloWorld-api" },
+    { "ParameterKey":"HelloWorldServiceName",       "ParameterValue":"service-helloworld-api" },
+    { "ParameterKey":"HelloWorldContainerName",     "ParameterValue":"service-helloworld-api" },
     { "ParameterKey":"HelloWorldContainerPort",     "ParameterValue":"3000" },
     { "ParameterKey":"HelloWorldContainerCpu",      "ParameterValue":"256" },
     { "ParameterKey":"HelloWorldContainerMemory",   "ParameterValue":"512" },
