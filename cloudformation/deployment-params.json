@@ -12,8 +12,9 @@
     { "ParameterKey":"HelloWorldDesiredCount",      "ParameterValue":"2" },
     { "ParameterKey":"HelloWorldHealthEndpoint",    "ParameterValue":"/" },
 
-    { "ParameterKey":"HelloWorldBuildspecLocation", "ParameterValue":"containers/helloworld-api" },
+    { "ParameterKey":"HelloWorldBuildspecLocation", "ParameterValue":"containers/helloworld-api/buildspec.yml" },
     { "ParameterKey":"HelloWorldEnvironmentType",   "ParameterValue":"LINUX_CONTAINER" },
     { "ParameterKey":"HelloWorldComputeType",       "ParameterValue":"BUILD_GENERAL1_SMALL" },
-    { "ParameterKey":"HelloWorldBuildImage",        "ParameterValue":"aws/codebuild/ubuntu-base:14.04" }
+    { "ParameterKey":"HelloWorldBuildImage",        "ParameterValue":"aws/codebuild/ubuntu-base:14.04" },
+    { "ParameterKey":"GitHubToken",                 "ParameterValue":"a845e411026b6e15c952eb58f82e9ce912cfd6d3" }
 ]
