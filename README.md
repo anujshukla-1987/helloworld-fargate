@@ -18,7 +18,7 @@ Steps to run application.
 
 6. Now time to deploy our architecture.
 * Go to helloworld-fargate/cloudformation/deployment-params.json. This file is our configuration master data where configuration can be altered as per need and it is referenced in cloudformations.
-* Go to folder helloworld-fargate/cloudformation and run below aws cli command to create above described AWS fargate architecture for you.
+* Go to project root helloworld-fargate and run below aws cli command to create above described AWS fargate architecture for you.
 
 ```bash
 aws cloudformation create-stack \
