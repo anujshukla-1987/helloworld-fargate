@@ -32,5 +32,5 @@ aws cloudformation create-stack \
 7. Once stack is completed completely you will get fargate service url for Application.
 
 8. This stack is also creating a CodeBuild pipeline which can do rolling updates to the infra. So chnage anything in app.js and commit it again. Go to Codebuild console and build the project already configured. It will trigger build pipeline which automatically updates Fargate cluster with new containers while draining the old ones
-9. sleanup is super simple. Just delete the stack-helloworld and all the resources will be deleted. Only S3 bucket and ECR will remain.
+9. Cleanup is super simple. Just delete the stack-helloworld and all the resources will be deleted. Only S3 bucket and ECR will remain.
 
