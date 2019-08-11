@@ -20,11 +20,7 @@ Parameters:
   CodeRepositoryURL:
     Description: URL of the repo which contains CFN template.
     Type: String
-  GitHubToken:
-    Type: String
-    Description: Secret Token of github for access.
-    Default: ""
-    NoEcho: true
+  
   BuildspecLocation:
     Description: Location of buildspec configuration
     Type: String
@@ -155,8 +151,7 @@ Resources:
         Location: !Ref CodeRepositoryURL
         Type: GITHUB
         Auth:
-          Type: OAUTH
-          Resource: !Ref GitHubToken
+          Type: OAUTH          
         BuildSpec: !Ref BuildspecLocation
       Artifacts:
         Type: NO_ARTIFACTS

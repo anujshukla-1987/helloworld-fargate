@@ -16,4 +16,5 @@
     { "ParameterKey":"HelloWorldEnvironmentType",   "ParameterValue":"LINUX_CONTAINER" },
     { "ParameterKey":"HelloWorldComputeType",       "ParameterValue":"BUILD_GENERAL1_SMALL" },
     { "ParameterKey":"HelloWorldBuildImage",        "ParameterValue":"aws/codebuild/ubuntu-base:14.04" }
+    
 ]
