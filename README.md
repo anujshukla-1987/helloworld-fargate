@@ -2,7 +2,7 @@
 
 This is a simple nodeJS project running in fully managed fargate cluster in multiAZ environment.
 
-![](https://github.com/anujshukla-1987/helloworld-fargate/tree/master/arch-img/Fargate-HelloWorld.png)
+Please see Reference Architecture in folder arch-img
 
 Steps to run application.
 
