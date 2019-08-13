@@ -2,8 +2,10 @@ var express = require('express');
 
 var mysql = require('mysql');
 
+let status = "";
+
 var connection = mysql.createConnection({
-  host     : "mydatabase.cux5hwsmbyzf.us-east-1.rds.amazonaws.com",
+  host     : "sm1hxmkwzunic1l.cux5hwsmbyzf.us-east-1.rds.amazonaws.com",
   user     : "adminuser",
   password : "adminpassword",
   port     : "3306"
@@ -12,9 +14,10 @@ var connection = mysql.createConnection({
 connection.connect(function(err) {
   if (err) {
     console.error('Database connection failed: ' + err.stack);
+    status = "Connection to database failed";
     return;
   }
-
+  status = "Connection to database successfull";
   console.log('Connected to database.');
 });
 
@@ -27,7 +30,7 @@ app.listen(3000, () => console.log('API listening on port 3000!'))
 
 app.get('/', function (req, res) {
     res.send({
-        "status": "Good"
+        "status": status
     })
 });
 
