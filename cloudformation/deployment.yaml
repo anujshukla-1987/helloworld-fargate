@@ -57,6 +57,20 @@ Parameters:
   HelloWorldBuildImage:
     Description: System Image identifier of the image to use for code build
     Type: String
+    
+  DBName:    
+    Description: The database name
+    Type: String
+    
+  DBUser:
+    NoEcho: 'true'
+    Description: The database admin account username
+    Type: String
+
+  DBPassword:
+    NoEcho: 'true'
+    Description: The database admin account password
+    Type: String
 
 
 Resources:
@@ -74,10 +88,27 @@ Resources:
   baseNetworking:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: !Sub 'https://s3.amazonaws.com/${BucketName}/resources/service-helloworld/cloudformation/infra/vpc-networking.yaml'
+      TemplateURL: !Sub 'https://s3.amazonaws.com/${BucketName}/resources/service-helloworld/cloudformation/infra/vpc-networking-main.yaml'
 
+  baseDatabase:
+    DependsOn: [ baseNetworking ]
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      Parameters:
+        DBName:
+          !Ref DBName
+        DBUser:
+          !Ref DBUser
+        DBPassword:
+          !Ref DBPassword
+        VpcIdPrivate:
+          !GetAtt [ baseNetworking, Outputs.VPCPrivate ]
+        PrivateSubnetIDs:
+          !GetAtt [ baseNetworking, Outputs.SubnetsPrivatePrivateVPC ]        
+      TemplateURL: !Sub 'https://s3.amazonaws.com/${BucketName}/resources/service-helloworld/cloudformation/infra/database.yaml'
+  
   helloWorldService:
-    DependsOn: [ baseFargate, baseNetworking ]
+    DependsOn: [ baseFargate, baseNetworking, baseDatabase ]
     Type: AWS::CloudFormation::Stack
     Properties:
       Parameters:
@@ -103,6 +134,8 @@ Resources:
           !Ref HelloWorldDesiredCount
         HealthEndpoint:
           !Ref HelloWorldHealthEndpoint
+        DbHost:
+          !GetAtt [MasterDB, Endpoint.Address]
       TemplateURL: !Sub 'https://s3.amazonaws.com/${BucketName}/resources/service-helloworld/cloudformation/infra/fargate-service.yaml'
 
   HelloWorldCodebuild:

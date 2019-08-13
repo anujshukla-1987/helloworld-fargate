@@ -39,6 +39,9 @@ Parameters:
   HealthEndpoint:
     Type: String
     Description: Health Endpoint to target via Application load balancer health checks
+  DbHost:
+    Type: String
+    Description: Hostname of DB
 
 Resources:
 
@@ -115,6 +118,9 @@ Resources:
                     - ':latest'
           PortMappings:
             - ContainerPort: !Ref ContainerPort
+          Environment:
+            - Name : 'DbHost'
+              Value: !Ref DbHost
           LogConfiguration:
             LogDriver: awslogs
             Options:

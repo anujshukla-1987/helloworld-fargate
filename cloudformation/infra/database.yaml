@@ -1,0 +1,89 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: 'Creating Mysql RDS in private subnets'
+
+Parameters:
+  DBName:
+    Default: MyDatabase
+    Description: The database name
+    Type: String
+    MinLength: '1'
+    MaxLength: '64'
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
+    ConstraintDescription: must begin with a letter and contain only alphanumeric
+      characters.
+  DBUser:
+    NoEcho: 'true'
+    Description: The database admin account username
+    Type: String
+    MinLength: '1'
+    MaxLength: '16'
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
+    ConstraintDescription: must begin with a letter and contain only alphanumeric
+      characters.
+  DBPassword:
+    NoEcho: 'true'
+    Description: The database admin account password
+    Type: String
+    MinLength: '1'
+    MaxLength: '41'
+    AllowedPattern: '[a-zA-Z0-9]+'
+    ConstraintDescription: must contain only alphanumeric characters.
+    
+  VpcIdPrivate:
+    Type: 'AWS::EC2::VPC::Id'
+    Description: VPC ID
+  
+  PrivateSubnetIDs:
+    Type: 'List<AWS::EC2::Subnet::Id>'
+    Description: Private Subnet IDs for the Fargate Containers 
+
+Resources:
+
+  TestDBSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties: 
+      DBSubnetGroupDescription: 'Subnets for DB'
+      DBSubnetGroupName: 'testDBSubnetGroup'
+      SubnetIds: !Ref PrivateSubnetIDs      
+
+  DBEC2SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow http to client host
+      VpcId:
+        Ref: VpcIdPrivate
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '3306'
+          ToPort: '3306'
+          CidrIp: 0.0.0.0/0
+      SecurityGroupEgress:
+        - IpProtocol: tcp
+          FromPort: '3306'
+          ToPort: '3306'
+          CidrIp: 0.0.0.0/0        
+
+  MasterDB:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBName: !Ref 'DBName'
+      AllocatedStorage: '5'
+      DBInstanceClass: 'db.t2.small'
+      Engine: MySQL
+      MasterUsername: !Ref 'DBUser'
+      MasterUserPassword: !Ref 'DBPassword'
+      MultiAZ: 'false'
+      DBSubnetGroupName: !Ref TestDBSubnetGroup
+      Tags:
+      - Key: Name
+        Value: Master Database
+      VPCSecurityGroups:
+      - !Ref DBEC2SecurityGroup      
+    DeletionPolicy: Snapshot
+
+Outputs:
+
+  MasterJDBCConnectionString:
+    Description: JDBC connection string for the master database
+    Value: !Join ['', ['jdbc:mysql://', !GetAtt [MasterDB, Endpoint.Address], ':',
+        !GetAtt [MasterDB, Endpoint.Port], /, !Ref 'DBName']]

@@ -4,8 +4,10 @@ var mysql = require('mysql');
 
 let status = "";
 
+let dbhost = process.env.DbHost;
+
 var connection = mysql.createConnection({
-  host     : "sm1hxmkwzunic1l.cux5hwsmbyzf.us-east-1.rds.amazonaws.com",
+  host     : dbhost,
   user     : "adminuser",
   password : "adminpassword",
   port     : "3306"

@@ -15,6 +15,10 @@
     { "ParameterKey":"HelloWorldBuildspecLocation", "ParameterValue":"containers/helloworld-api/buildspec.yml" },
     { "ParameterKey":"HelloWorldEnvironmentType",   "ParameterValue":"LINUX_CONTAINER" },
     { "ParameterKey":"HelloWorldComputeType",       "ParameterValue":"BUILD_GENERAL1_SMALL" },
-    { "ParameterKey":"HelloWorldBuildImage",        "ParameterValue":"aws/codebuild/ubuntu-base:14.04" }
+    { "ParameterKey":"HelloWorldBuildImage",        "ParameterValue":"aws/codebuild/ubuntu-base:14.04" },
+    
+    { "ParameterKey":"DBName",        "ParameterValue":"TestDB" },
+    { "ParameterKey":"DBUser",    "ParameterValue":"adminuser" },
+    { "ParameterKey":"DBPassword", "ParameterValue":"adminpassword" }
     
 ]
