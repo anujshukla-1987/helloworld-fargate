@@ -83,7 +83,7 @@ Resources:
 
 Outputs:
 
-  MasterJDBCConnectionString:
+  DatabaseHost:
     Description: JDBC connection string for the master database
-    Value: !Join ['', ['jdbc:mysql://', !GetAtt [MasterDB, Endpoint.Address], ':',
-        !GetAtt [MasterDB, Endpoint.Port], /, !Ref 'DBName']]
+    Value: !GetAtt [MasterDB, Endpoint.Address]
+        

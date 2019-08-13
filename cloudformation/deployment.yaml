@@ -135,7 +135,7 @@ Resources:
         HealthEndpoint:
           !Ref HelloWorldHealthEndpoint
         DbHost:
-          !GetAtt [MasterDB, Endpoint.Address]
+          !GetAtt [baseDatabase, Outputs.DatabaseHost]
       TemplateURL: !Sub 'https://s3.amazonaws.com/${BucketName}/resources/service-helloworld/cloudformation/infra/fargate-service.yaml'
 
   HelloWorldCodebuild:
