@@ -16,10 +16,10 @@ var connection = mysql.createConnection({
 connection.connect(function(err) {
   if (err) {
     console.error('Database connection failed: ' + err.stack);
-    status = "Connection to database failed";
+    status = "Connection to database failed hello world";
     return;
   }
-  status = "Connection to database successfull";
+  status = "Connection to database successfull hello world";
   console.log('Connected to database.');
 });
 
